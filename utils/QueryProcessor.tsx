@@ -13,6 +13,15 @@ export default function QueryProcessor(query: string): string {
       return (
            "theo"
       );
+  } else if (query.toLowerCase().includes("what is") && query.toLowerCase.includes("plus")) {
+      let words = query.split(' ');
+      let func = (elem) => elem.toLowerCase() === 'plus';
+      let idx = words.findIndex(func);
+      let left = words[idx - 1];
+      let right = words[idx + 1];
+      return (
+           Number(left) + Number(right)
+      );
   }
 
   return "";
