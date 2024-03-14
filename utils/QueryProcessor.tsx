@@ -20,7 +20,7 @@ export default function QueryProcessor(query: string): string {
       let left = words[idx - 1];
       let right = words[idx + 1];
       return (
-           Number(left) + Number(right)
+           String(Number(left) + Number(right))
       );
   }
 
