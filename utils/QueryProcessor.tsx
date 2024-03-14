@@ -47,6 +47,15 @@ export default function QueryProcessor(query: string): string {
       return (
            String(result)
       );
+  }  else if (query.toLowerCase().includes("minus")) {
+      let words = query.split(' ');
+      let func = (elem : string) => elem.toLowerCase() == 'minus';
+      let idx = words.findIndex(func);
+      let left = words[idx - 1];
+      let right = words[idx + 1];
+      return (
+           String(Number(left) - Number(right))
+      );
   }
 
   return "";
