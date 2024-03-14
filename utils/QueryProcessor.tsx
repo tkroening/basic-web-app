@@ -23,7 +23,8 @@ export default function QueryProcessor(query: string): string {
            String(Number(left) + Number(right))
       );
   } else if (query.toLowerCase().includes("largest")) {
-      let words = query.toLowerCase().split(' ');
+      let colonIdx = query.search(":");
+      let words = query.slice(colonIdx).split(', ');
       let nums = words.filter((word : string) => !isNaN(+word));
       let realNums = nums.map((word : string) => Number(word));
       let max = Math.max(...realNums);
