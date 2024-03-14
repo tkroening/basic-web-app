@@ -30,6 +30,14 @@ export default function QueryProcessor(query: string): string {
       return (
            String(max)
       );
+  }  else if (query.toLowerCase().includes("multiplied by")) {
+      let words = query.toLowerCase().split(' ');
+      let nums = words.filter((word : string) => !isNaN(+word));
+      let realNums = nums.map((word : string) => Number(word));
+      let result = realNums.reduce((a, b) => a * b);
+      return (
+           String(result)
+      );
   }
 
   return "";
