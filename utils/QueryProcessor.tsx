@@ -1,3 +1,17 @@
+function isPrime(n : number) {
+    if (n < 2) {
+        return false;
+    }
+
+    for (let i = 2; i < n; i++) {
+        if (n % i == 0) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
 export default function QueryProcessor(query: string): string {
   if (query.toLowerCase().includes("shakespeare")) {
     return (
@@ -70,19 +84,6 @@ export default function QueryProcessor(query: string): string {
       let words = query.slice(colonIdx).split(', ');
       let nums = words.filter((word : string) => !isNaN(+word));
       let realNums = nums.map((word : string) => Number(word));
-      let isPrime = (n : number) => (
-           if (n < 2) {
-               return false;
-           }
-
-           for (int i = 2; i < n; i++) {
-                if (n % i == 0) {
-                    return false;
-                }
-           }
-
-           return true;
-      );
       let result = realNums.filter((a) => isPrime(a));
       return (
            String(result)
