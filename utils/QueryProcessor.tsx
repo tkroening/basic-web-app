@@ -22,6 +22,13 @@ export default function QueryProcessor(query: string): string {
       return (
            String(Number(left) + Number(right))
       );
+  } else if (query.toLowerCase().includes("which of the following numbers is the largest")) {
+      let words = query.toLowerCase().split(' ');
+      let nums = words.filter((word : string) => !isNaN(word));
+      let max = Math.max(...nums);
+      return (
+           String(max)
+      );
   }
 
   return "";
