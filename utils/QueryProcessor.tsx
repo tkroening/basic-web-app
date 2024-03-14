@@ -38,6 +38,14 @@ export default function QueryProcessor(query: string): string {
       return (
            String(result)
       );
+  }  else if (query.toLowerCase().includes("both a square and a cube")) {
+      let words = query.toLowerCase().split(' ');
+      let nums = words.filter((word : string) => !isNaN(+word));
+      let realNums = nums.map((word : string) => Number(word));
+      let result = realNums.filter((a) => Number.isInteger(Math.pow(a, 1 / 2)) && Number.isInteger(Math.pow(a, 1 / 3)) );
+      return (
+           String(result)
+      );
   }
 
   return "";
