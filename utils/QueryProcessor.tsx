@@ -58,6 +58,7 @@ export default function QueryProcessor(query: string): string {
            String(Number(left) - Number(right))
       );
   }  else if (query.toLowerCase().includes("power")) {
+      let words = query.split(' ');
       let nums = words.filter((word : string) => !isNaN(+word));
       let realNums = nums.map((word : string) => Number(word));
       let result = Math.pow(realNums[0], realNums[1]);
